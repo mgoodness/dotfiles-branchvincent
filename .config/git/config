@@ -54,7 +54,7 @@
 [pretty]
 	stash = format:%C(bold magenta)%gd %C(blue)%>(13,trunc)%ad %C(reset)%s
 [pull]
-	ff = only
+	; ff = only
 	rebase = merges
 [push]
 	autoSetupRemote = true

@@ -1,11 +1,14 @@
 /*
 !/.bashrc
 !/.config/
-/.config/brew/Brewfile
 /.config/configstore/
 /.config/fish/conf.d/secrets.fish
 /.config/fish/fish_variables
 /.config/gcloud/
+/.config/gh/
+/.config/homebrew/Brewfile
+/.config/homebrew/Brewfile.lock.json
+/.config/nvim/
 /.config/op/
 /.config/ssh/known_hosts
 /.config/zsh/*.zwc

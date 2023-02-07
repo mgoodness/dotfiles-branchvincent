@@ -3,6 +3,7 @@ status is-login || exit
 # Environment
 set -gx BAT_THEME TwoDark
 set -gx EDITOR hx
+set -gx FZF_DEFAULT_OPTS --ansi --color=16 --height=80% --layout=reverse --marker="*" --preview-window=wrap
 set -gx GIT_MERGE_AUTOEDIT no # accept default merge commit message
 command -q delta || set -gx GIT_PAGER $PAGER
 set -gx GIT_WORKSPACE ~/Code
@@ -12,11 +13,9 @@ set -gx man_bold --bold $fish_color_command
 set -gx man_standout --reverse F0CB02
 set -gx man_underline --underline $fish_color_param
 set -gx PAGER less
+set -gx USE_GKE_GCLOUD_AUTH_PLUGIN True
 
 set -Uq fish_features || set -U fish_features all
-string match -q "$TERM_PROGRAM" vscode && set -gx EDITOR code --wait
-command -q delta || set -gx GIT_PAGER $PAGER
-command -q docker || functions -e docker
 
 # Daily update
 up --auto

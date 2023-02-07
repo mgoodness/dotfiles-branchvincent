@@ -10,37 +10,47 @@ function __maybe_mkdir
 end
 
 # Core directories
-set -gx XDG_BIN_HOME ~/.local/bin # ok, i made this one up
+set -gx LOCAL_BIN_HOME ~/.local/bin # Non-standard
+__maybe_mkdir $LOCAL_BIN_HOME
+
 set -gx XDG_CACHE_HOME ~/.cache
 set -gx XDG_CONFIG_HOME ~/.config
 set -gx XDG_DATA_HOME ~/.local/share
 set -gx XDG_STATE_HOME ~/.local/state
-set -gx --path XDG_BIN_DIRS $XDG_BIN_HOME # this too
 
-for d in XDG_{BIN,CACHE,CONFIG,DATA,STATE}_HOME
+for d in XDG_{CACHE,CONFIG,DATA,STATE}_HOME
     __maybe_mkdir $$d
 end
+
+# Deno
+set -gx DENO_INSTALL_ROOT $LOCAL_BIN_HOME/..
+
+# GCP
+set -gx CLOUDSDK_CONFIG $XDG_CONFIG_HOME/gcloud
+__maybe_mkdir $CLOUDSDK_CONFIG
+
+# GnuPG
+set -gx GNUPGHOME $XDG_DATA_HOME/gnupg
+__maybe_mkdir $GNUPGHOME
+
+# Go
+set -gx GOBIN $LOCAL_BIN_HOME
+set -gx GOPATH $XDG_DATA_HOME/go
 
 # Homebrew
 set -gx HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/homebrew/Brewfile
 
-# code: https://github.com/microsoft/vscode/issues/3884
-
-# deno
-set -gx DENO_INSTALL_ROOT $XDG_BIN_HOME/..
-
-# go
-set -gx GOBIN $XDG_BIN_HOME
-set -gx GOPATH $XDG_DATA_HOME/go
-
-# kube
+# K8s
 set -gx KUBECONFIG $XDG_DATA_HOME/kube/config.yaml
 set -gx KUBECACHEDIR $XDG_CACHE_HOME/kube
 
-# less
+# Krew
+set -gx KREW_ROOT $XDG_CACHE_HOME/krew
+
+# Less
 set -gx LESSHISTFILE /dev/null
 
-# node
+# Node
 set -gx NODE_REPL_HISTORY /dev/null
 set -gx NO_UPDATE_NOTIFIER 1 # used by npm: https://github.com/yeoman/update-notifier/issues/180
 set -gx NPM_CONFIG_CACHE $XDG_CACHE_HOME/npm
@@ -48,36 +58,41 @@ set -gx NPM_CONFIG_DEVDIR $XDG_DATA_HOME/node-gyp
 set -gx NPM_CONFIG_INIT_MODULE $XDG_CONFIG_HOME/npm/config/npm-init.js
 set -gx NPM_CONFIG_PREFIX $XDG_DATA_HOME/npm
 set -gx NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/npmrc
-set -p XDG_BIN_DIRS $NPM_CONFIG_PREFIX/bin
+__maybe_mkdir $NPM_CONFIG_PREFIX/bin
 __maybe_mkdir $NPM_CONFIG_PREFIX/lib
 
-# psql
-set -gx PSQL_HISTORY /dev/null
-
-# python
+# Python
+# set -gx PIPX_BIN_DIR=$LOCAL_BIN_HOME
 set -gx PIPX_HOME $XDG_DATA_HOME/pipx
+# set -gx PYENV_ROOT $XDG_DATA_HOME/pyenv
 set -gx PYTHONSTARTUP $XDG_CONFIG_HOME/python/startup.py
 
-# ruby
+# Ruby
 set -gx BUNDLE_USER_CACHE $XDG_CACHE_HOME/bundle
 set -gx BUNDLE_USER_CONFIG $XDG_CONFIG_HOME/bundle
 set -gx BUNDLE_USER_PLUGIN $XDG_DATA_HOME/bundle
 set -gx GEM_HOME $XDG_DATA_HOME/gem
 set -gx GEM_SPEC_CACHE $XDG_CACHE_HOME/gem
 
-# rust
+# Rust
 set -gx CARGO_HOME $XDG_DATA_HOME/cargo
 set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
-set -p XDG_BIN_DIRS $CARGO_HOME/bin
+__maybe_mkdir $CARGO_HOME/bin
 
-# ssh
+# SSH
 set -gx GIT_SSH_COMMAND "ssh -F $XDG_CONFIG_HOME/ssh/config"
 alias ssh $GIT_SSH_COMMAND
 
-# zsh
+# VS Code: https://github.com/microsoft/vscode/issues/3884
+
+# Zsh
 set -gx ZDOTDIR $XDG_CONFIG_HOME/zsh
 
 # PATH
 if status is-login
-    fish_add_path -g --move --path $XDG_BIN_DIRS $HOMEBREW_PREFIX/{,s}bin
+    fish_add_path -g --move --path $LOCAL_BIN_DIR $HOMEBREW_PREFIX/{,s}bin
+    fish_add_path -g $NPM_CONFIG_PREFIX/bin
+    fish_add_path -g $CARGO_HOME/bin
+    fish_add_path -g $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
+    fish_add_path -g $KREW_ROOT/bin
 end
