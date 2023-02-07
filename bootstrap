@@ -25,4 +25,4 @@ fi
 # Install yadm and run bootstrap
 echo "Bootstrapping dotfiles"
 source /dev/stdin <<<"$(curl -fsSL bootstrap.yadm.io)"
-yadm clone --bootstrap https://github.com/branchvincent/dotfiles.git -f
+yadm clone --bootstrap https://github.com/mgoodness/dotfiles-branchvincent.git -f

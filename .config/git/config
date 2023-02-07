@@ -1,54 +1,79 @@
 # -*- mode: ini -*-
-[user]
-    name = Branch Vincent
-    email = branchevincent@gmail.com
-    signingKey = AE66FEB122C01EDC
-[github]
-    user = branchvincent
-[core]
-    autocrlf = input                            # normalize line endings on commit (but not checkout)
-    pager = delta --diff-so-fancy --navigate    # use a better diff visualizer
+[branch]
+	autoSetupRebase = always
+[color]
+	ui = true
 [color "diff"]
-    meta = yellow
-    frag = magenta bold
-    commit = yellow bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
 [color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = red bold 52
-    newNormal = green bold
-    newHighlight = green bold 22
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
 [commit]
-    template = ~/.config/git/commit
-    gpgSign = true
+	gpgSign = true
+	template = ~/.config/git/commit
+[core]
+	autocrlf = input							# normalize line endings on commit (but not checkout)
+	excludesFile = ~/.config/git/ignore
+	pager = delta --diff-so-fancy --navigate	# use a better diff visualizer
+	trustctime = false
+[credential]
+	helper = osxkeychain
 [diff]
-    colorMoved = default    # color moved lines differently
+	colorMoved = default	# color moved lines differently
+	; colorMoved = zebra
+	noprefix = true
 [fetch]
-    prune = true        # prune deleted remote refs
-    pruneTags = true    # prune deleted remote tags
+	prune = true		# prune deleted remote refs
+	pruneTags = true	# prune deleted remote tags
+[github]
+	user = mgoodness
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 [format]
-    pretty = format:%C(bold magenta)%h %C(blue)%>(13,trunc)%ad %C(cyan)%<(15,trunc)%aN %C(red)%d %C(reset)%s
+	pretty = format:%C(bold magenta)%h %C(blue)%>(13,trunc)%ad %C(cyan)%<(15,trunc)%aN %C(red)%d %C(reset)%s
 [include]
-    path = aliases
+	path = aliases
+[includeIf "gitdir:~/MLB/"]
+	path = ~/MLB/.gitconfig
 [init]
-    defaultBranch = main
+	defaultBranch = main
 [log]
-    date = relative
-    follow = true
+	date = relative
+	follow = true
 [merge]
-    autoStash = true
+	autoStash = true
 [pretty]
-    stash = format:%C(bold magenta)%gd %C(blue)%>(13,trunc)%ad %C(reset)%s
+	stash = format:%C(bold magenta)%gd %C(blue)%>(13,trunc)%ad %C(reset)%s
 [pull]
-    ff = only
+	ff = only
+	rebase = merges
 [push]
-    autoSetupRemote = true
-    followTags = true   # always push annotated tag(s)
+	autoSetupRemote = true
+	default = upstream
+	followTags = true	# always push annotated tag(s)
 [rebase]
-    autoStash = true
-[url "https://"]
-    insteadOf = git://
-[url "https://github.com/"]
-    insteadOf = git@github.com:
+	autoStash = true
+[tag]
+	forceSignAnnotated = true
+[url "git@github.mlbam.net:"]
+	insteadOf = https://github.mlbam.net/
+; [url "https://"]
+;	  insteadOf = git://
+; [url "https://github.com/"]
+;	  insteadOf = git@github.com:
+[user]
+	email = "mike@opsgoodness.net"
+	name = Michael Goodness
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKbq/cbVZYW8uIVsdCJxKKtB8OwL7+kzeN/1u6Z1ihEM
+	useConfigOnly = true
+[web]
+	browser = open

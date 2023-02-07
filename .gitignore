@@ -8,10 +8,9 @@
 /.config/gcloud/
 /.config/op/
 /.config/ssh/*
+!/.config/ssh/*.pub
 !/.config/ssh/config
 /.config/ssh/*/*
-!/.config/ssh/conf.d/default.conf
-!/.config/ssh/keys/*.pub
 /.config/zsh/*.zwc
 !/.github/
 !/.gitignore

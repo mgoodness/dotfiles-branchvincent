@@ -1,54 +1,13 @@
 # -*- mode: ini -*-
 [alias]
+	finishpr = !"f () { \
+	  default="$(git head-branch)"; \
+	  git checkout "$default" && git pull origin "$default"; \
+	  git push --delete origin "$1"; \
+	  git branch --delete --force "$1"; \
+	}; f"
 
-    ### Frequent commands ###
+	head-branch = !git remote show $(git upstream-name) | awk '/HEAD branch/ {print $NF}'
 
-    ci = commit
-    cl = clone --recurse-submodules
-    co = checkout --quiet
-    ph = push --quiet
-    pl = pull --quiet
-    ls = log -5
-    ll = log
-    la = log --stat
-    lg = log --graph
-    st = status --short --branch
-    sl = stash list --pretty=stash
-    ss = stash push --include-untracked
-    sp = stash pop
-    sw = switch --quiet
+	upstream-name = !git remote | rg -o '(origin|upstream)' | tail -1
 
-    ### Inspecting repo ###
-
-    # Refs
-    aliases = !git config --list | sed -En \"s/^alias.([^=]+)=(.+)/$(tput setaf 6)\\1$(tput sgr0) $(printf '\\x60') \\2/p\" | column -t -s $(printf '\\x60') | sort
-    branches = branch --all -vv
-    remotes = remote --verbose
-    tags = tag --list -n1 --sort=-version:refname
-
-    # Maintenance
-    grep-all = "!f() { rg --hidden --glob=!.git/ \"${@:1}\" $GIT_WORKSPACE/python-poetry; }; f"
-    ignore = "!f() { curl -sL gitignore.io/api/$(echo $@ | tr ' ' ',') | sed '1,4d;$d;' ;}; f"
-    prune-branches = !git fetch --all --prune && git branch -vv | awk '/: gone]/ && !/\\*/ {print $1}' | xargs git branch -D
-    delete-tag = "!f() { git tag -d $1 && git push -q --delete origin $1; }; f"
-
-    ### Making changes ###
-
-    # Stage
-    staged = diff --staged
-    unstage = restore --staged
-    discard = restore --staged --worktree
-    discard-all = !git stash push -u && git stash drop
-    untrack = rm --cached
-
-    # Commit
-    amend = commit -q --amend --no-edit
-    commit-each = "!f() { for fn in $(git ls-files --modified); do git commit -nm \"$(basename \"${fn%.*}\"): $1\" \"$fn\"; done; }; f"
-    fixup = !git amend && git push -q --force-with-lease
-    uncommit = reset --soft HEAD~1
-
-    # Push
-    publish = push -q --set-upstream origin HEAD
-    unpublish = !git push -q origin --delete $(git branch --show-current)
-    sync = !git pull --rebase && git push -q
-    pr = !gh pr create --fill && gh pr view --web
