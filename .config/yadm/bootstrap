@@ -42,7 +42,7 @@ log "Running bootstrap"
 for file in "${BASH_SOURCE[0]}.d"/*.sh; do
     filename=$(basename "${file%.sh}")
 
-    # Allow skipping certain scripts (e.g. YADM_BOOTSTRAP_FILTER='^(brew|macos)$')
+    # Allow skipping certain scripts (e.g. YADM_BOOTSTRAP_FILTER='^(01-brew|02-macos)$')
     if ! confirm "$filename" || [[ ! $filename =~ ${YADM_BOOTSTRAP_FILTER:-.*} ]]; then
         warn "Skipping $filename"
         continue
