@@ -21,8 +21,8 @@ for d in XDG_{BIN,CACHE,CONFIG,DATA,STATE}_HOME
     __maybe_mkdir $$d
 end
 
-# brew
-set -gx HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/brew/Brewfile
+# Homebrew
+set -gx HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/homebrew/Brewfile
 
 # code: https://github.com/microsoft/vscode/issues/3884
 
