@@ -18,18 +18,18 @@ fi
 
 ### Dock ###
 debug "Dock"
-defaults write com.apple.dock orientation -string bottom     # Place at bottom
-defaults write com.apple.dock show-recents -bool false       # Hide recent apps
-defaults write com.apple.dock minimize-to-application -int 1 # Minimize apps into itself
-defaults write com.apple.dock magnification -int 1           # Enable magnification
+defaults write com.apple.dock orientation -string bottom # Place at bottom
+defaults write com.apple.dock show-recents -bool false   # Hide recent apps
+# defaults write com.apple.dock minimize-to-application -int 1 # Minimize apps into itself
+defaults write com.apple.dock magnification -int 1 # Enable magnification
 defaults write com.apple.dock largesize -int 80
 dockutil --no-restart --remove all
 dockutil --no-restart --add /System/Applications/Calendar.app
 dockutil --no-restart --add /System/Applications/Mail.app
 dockutil --no-restart --add /System/Applications/Messages.app
 dockutil --no-restart --add /Applications/Slack.app
-dockutil --no-restart --add /Applications/Spotify.app
-dockutil --no-restart --add /Applications/Google\ Chrome.app
+dockutil --no-restart --add /System/Applications/Music.app
+dockutil --no-restart --add /Applications/Safari.app
 dockutil --no-restart --add /Applications/Visual\ Studio\ Code.app
 dockutil --no-restart --add /Applications/iTerm.app
 dockutil --no-restart --add /System/Applications/System\ Settings.app
@@ -65,9 +65,9 @@ defaults write com.apple.dock wvous-tr-corner -int 12 # Top right: Notification 
 
 ### Sharing ###
 debug "Sharing"
-if [ "$(scutil --get ComputerName)" != "Branch's MacBook" ]; then
-    scutil --set ComputerName "Branch's MacBook"
-    scutil --set LocalHostName "Branchs-MacBook"
+if [ "$(scutil --get ComputerName)" != "Goodness's MacBook Pro" ]; then
+    scutil --set ComputerName "Goodness's MacBook Pro"
+    scutil --set LocalHostName "Goodness-MacBook-Pro"
 fi
 
 ### Siri ###
@@ -84,7 +84,7 @@ defaults write -g com.apple.trackpad.scaling 3 # Max trackpad speed
 
 ### Wallpaper ###
 debug "Wallpaper"
-osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/System/Library/Desktop Pictures/Monterey Graphic.heic"'
+osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/System/Library/Desktop Pictures/hello Orange.heic"'
 
 # Restart affected apps
 debug "Restarting apps"
