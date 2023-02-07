@@ -10,4 +10,3 @@
 	head-branch = !git remote show $(git upstream-name) | awk '/HEAD branch/ {print $NF}'
 
 	upstream-name = !git remote | rg -o '(origin|upstream)' | tail -1
-
