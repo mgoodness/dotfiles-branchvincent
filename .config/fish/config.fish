@@ -1,7 +1,6 @@
 status is-login || exit
 
 set -Uq fish_features || set -U fish_features all
-command -q docker || functions -e docker
 
 # Environment
 set -gx BAT_THEME TwoDark
