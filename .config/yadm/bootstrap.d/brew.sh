@@ -9,7 +9,7 @@ if ! has brew; then
 fi
 
 debug "Checking Homebrew packages"
-export HOMEBREW_BUNDLE_FILE=~/.config/brew/Brewfile
+export HOMEBREW_BUNDLE_FILE=~/.config/homebrew/Brewfile
 if ! has yadm || ! brew bundle check &>/dev/null; then
     debug "Installing Homebrew packages"
     brew bundle install --no-lock
