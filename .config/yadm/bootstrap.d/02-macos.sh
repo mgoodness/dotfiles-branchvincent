@@ -29,7 +29,7 @@ dockutil --no-restart --add /System/Applications/Mail.app
 dockutil --no-restart --add /System/Applications/Messages.app
 dockutil --no-restart --add /Applications/Slack.app
 dockutil --no-restart --add /System/Applications/Music.app
-dockutil --no-restart --add /Applications/Safari.app
+dockutil --no-restart --add /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app # https://github.com/kcrawford/dockutil/issues/144
 dockutil --no-restart --add /Applications/Visual\ Studio\ Code.app
 dockutil --no-restart --add /Applications/iTerm.app
 dockutil --no-restart --add /System/Applications/System\ Settings.app
