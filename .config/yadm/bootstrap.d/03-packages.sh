@@ -26,11 +26,11 @@ fi
 ### Krew ###
 if has kubectl krew; then
     debug "Krew"
-    kubectl krew install < ~/.config/krew/plugins.txt
+    kubectl krew install <~/.config/krew/plugins.txt
 fi
 
 ### KSOPS ###
-if has ksops ; then
+if has ksops; then
     debug "KSOPS"
     curl -fsLS https://github.com/viaduct-ai/kustomize-sops/releases/latest/download/ksops_latest_Darwin_x86_64.tar.gz | tar -xz -C /usr/local/bin
 fi
