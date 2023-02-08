@@ -32,6 +32,8 @@ dockutil --no-restart --add /System/Applications/Music.app
 dockutil --no-restart --add /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app # https://github.com/kcrawford/dockutil/issues/144
 dockutil --no-restart --add /Applications/Visual\ Studio\ Code.app
 dockutil --no-restart --add /Applications/iTerm.app
+dockutil --no-restart --add /System/Applications/Notes.app
+dockutil --no-restart --add /System/Applications/Reminders.app
 dockutil --no-restart --add /System/Applications/System\ Settings.app
 dockutil --no-restart --add ~/Documents --sort name --display folder --view list
 dockutil --no-restart --add ~/Downloads --sort dateadded --display folder --view fan
