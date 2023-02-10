@@ -27,3 +27,5 @@ set -gx USE_GKE_GCLOUD_AUTH_PLUGIN True
 
 # Daily update
 up --auto
+
+test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
