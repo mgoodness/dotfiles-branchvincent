@@ -15,8 +15,6 @@ end
 "
 
 bind \cg 'gh pr view --web &>/dev/null || gh repo view --web &>/dev/null'
-bind \co workon
-bind \cp 'workon --exec cd; commandline -f repaint'
 
 bind \cu '
 if not set -e GIT_DIR GIT_WORK_TREE
