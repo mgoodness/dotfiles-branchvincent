@@ -2,7 +2,8 @@
 
 status is-interactive || exit
 
-fish_vi_key_bindings
+fish_default_key_bindings
+# fish_vi_key_bindings
 
 bind \cc 'commandline ""'
 
