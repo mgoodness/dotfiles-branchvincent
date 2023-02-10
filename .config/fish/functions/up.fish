@@ -58,7 +58,7 @@ function __up_apt --description "Update apt packages"
     sudo apt autoremove -qqq
 end
 
-function __up_brew --description "Update Homebrew packages"
+function __up_homebrew --description "Update Homebrew packages"
     brew upgrade -q
     brew autoremove -q
     brew cleanup -q
@@ -75,7 +75,7 @@ function __up_dotfiles --description "Update dotfiles"
     yadm pull -q
 
     # Update package lists
-    command -q brew && brew bundle dump --force
+    command -q brew && brew bundle dump --force --no-restart
     cat $HOMEBREW_BUNDLE_FILE | string replace -r '("qlmarkdown"|"syntax-highlight")$' '$1, args: { no_quarantine: true }' >$HOMEBREW_BUNDLE_FILE
     command -q code && code --list-extensions >$XDG_CONFIG_HOME/code/extensions.txt
 
@@ -93,9 +93,6 @@ function __up_gcloud --description "Update gcloud"
 end
 
 function __up_git --description "Update git repos"
-    git workspace update &>/dev/null
-    env -u GIT_DIR -u GIT_WORK_TREE git workspace switch-and-pull &>/dev/null
-    git workspace run touch .envrc &>/dev/null
 end
 
 function __up_mas --description "Update macOS apps"
