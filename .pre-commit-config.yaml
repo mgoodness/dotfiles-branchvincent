@@ -4,9 +4,9 @@ repos:
     hooks:
       - id: check-symlinks
       - id: end-of-file-fixer
-      - id: pretty-format-json
-        args: [--autofix]
-        exclude: settings.json # jsonc
+      # - id: pretty-format-json
+      #   args: [--autofix]
+      #   exclude: settings.json # jsonc
       - id: trailing-whitespace
 
   - repo: https://github.com/shellcheck-py/shellcheck-py
@@ -31,7 +31,7 @@ repos:
     rev: v2.2.2
     hooks:
       - id: codespell
-        args: [--ignore-words-list, iterm]
+        args: [--ignore-words-list, doubleclick, iterm]
 
   - repo: local
     hooks:
