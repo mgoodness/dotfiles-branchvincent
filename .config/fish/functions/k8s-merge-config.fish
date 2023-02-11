@@ -1,4 +1,4 @@
-function kube-merge-config
+function k8s-merge-config
     set -l ktemp (mktemp)
 
     echo $KUBECONFIG

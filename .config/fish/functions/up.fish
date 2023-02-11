@@ -46,7 +46,7 @@ end
 function __up_all --description "Update everything"
     test -e ~/.cache/fish || mkdir -p ~/.cache/fish
     touch ~/.cache/fish/last-updated
-    for cmd in (functions -a | string replace -rf "^__up_(?!all|auto|docker|help)" "")
+    for cmd in (functions -a | string replace -rf "^__up_(?!all|auto|podman|help)" "")
         echo (set_color blue)"dotfiles"(set_color normal): updating (set_color --bold)$cmd(set_color normal) >&2
         __up_$cmd
     end
@@ -65,9 +65,9 @@ function __up_homebrew --description "Update Homebrew packages"
     brew doctor -q
 end
 
-function __up_docker --description "Update Docker images"
-    docker images --format '{{.Repository}}:{{.Tag}}' | xargs -n1 docker pull -q
-    docker system prune -f
+function __up_podman --description "Update Podman images"
+    podman images --format '{{.Repository}}:{{.Tag}}' | xargs -n1 podman pull -q
+    podman system prune -f
 end
 
 function __up_dotfiles --description "Update dotfiles"
@@ -79,7 +79,7 @@ function __up_dotfiles --description "Update dotfiles"
     command -q code && code --list-extensions >$XDG_CONFIG_HOME/code/extensions.txt
 
     # Trash non-xdg cache
-    command rm -rf ~/.{android,bash_history,bundle,config/configstore,docker,k3d,k8slens,kube,node,npm,rustup,yarnrc}
+    command rm -rf ~/.{bash_history,bundle,config/configstore,kube,node,npm,rustup,yarnrc}
 end
 
 function __up_fisher --description "Update fish packages"

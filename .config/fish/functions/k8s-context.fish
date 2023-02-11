@@ -1,4 +1,4 @@
-function kube-context
+function k8s-context
     if test -n "$argv"
         set -f fzf_query "--query=$argv"
     end
