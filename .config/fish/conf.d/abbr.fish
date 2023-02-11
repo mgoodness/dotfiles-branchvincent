@@ -27,12 +27,12 @@ abbr gpdo "git push --delete origin"
 abbr --position anywhere k kubectl
 abbr --position anywhere ksys "kubectl --namespace=kube-system"
 abbr kbuild "kustomize build"
-abbr kc kube-context
+abbr kc k8s-context
 abbr kdrain "kubectl drain --delete-emptydir-data --ignore-daemonsets"
 abbr kfailed "kubectl delete pods -A --field-selector=status.phase=Failed"
 abbr kkrew "kubectl krew"
 abbr klogs "kubectl logs"
-abbr kn kube-namespace
+abbr kn k8s-namespace
 abbr kport "kubectl port-forward"
 abbr kwatch "watch kubectl"
 
