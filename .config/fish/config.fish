@@ -3,7 +3,8 @@ status is-login || exit
 # Environment
 set -gx BAT_THEME TwoDark
 set -gx EDITOR hx
-set -gx FZF_DEFAULT_OPTS --ansi --color=16 --height=80% --layout=reverse --marker="*" --preview-window=wrap
+set -gx FZF_DEFAULT_OPTS --ansi --color=16 --cycle --height=80% --layout=reverse --marker="*" --preview-window=wrap
+set -gx fzf_fd_opts --hidden
 set -gx GIT_MERGE_AUTOEDIT no # accept default merge commit message
 command -q delta || set -gx GIT_PAGER $PAGER
 set -gx GIT_WORKSPACE ~/Code
