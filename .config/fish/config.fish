@@ -5,14 +5,8 @@ set -Uq fish_features || set -U fish_features all
 # Environment
 set -gx BAT_THEME TwoDark
 
-set -gx EDITOR nvim
-if command -q code
-    set -gx EDITOR code --wait
-else if command -q hx
-    set -gx EDITOR hx
-end
-
 set -gx FZF_DEFAULT_OPTS --ansi --color=16 --height=80% --layout=reverse --marker="*" --preview-window=wrap
+set -gx EDITOR hx
 set -gx GIT_MERGE_AUTOEDIT no # accept default merge commit message
 set -gx LESSCHARSET utf-8
 set -gx LESS --incsearch --ignore-case --jump-target=.5 --LONG-PROMPT --raw-control-chars --quit-if-one-screen
