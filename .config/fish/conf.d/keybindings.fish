@@ -3,13 +3,6 @@
 status is-interactive || exit
 
 bind \cc 'commandline ""'
-bind \cl "
-clear; printf '\e[3J'; commandline -f repaint
-if functions -q tide_prompt_at_bottom
-    tide_prompt_at_bottom
-end
-"
-
 bind \cg 'gh pr view --web &>/dev/null || gh repo view --web &>/dev/null'
 bind \cu '
 if not set -e GIT_DIR GIT_WORK_TREE
