@@ -18,7 +18,7 @@ set -gx tide_node_color 68A063
 set -gx tide_rustc_icon R
 set -gx tide_tea_color cyan
 set -gx tide_tea_bg_color normal
-# set -gx tide_transient_prompt
+
 string match -q "$TERM_PROGRAM" vscode && set -gx tide_shlvl_threshold "$SHLVL"
 
 # Items
@@ -38,14 +38,3 @@ set tide_right_prompt_items \
     direnv \
     shlvl \
     && :
-
-# Show on command
-# set -gx tide_show_gcloud_on gcloud
-# set -gx tide_show_kubectl_on kubectl helm kubens kubectx stern
-
-# Keep prompt at bottom
-if command -q tput
-    function tide_prompt_at_bottom --on-event fish_prompt
-        tput cup $LINES
-    end
-end

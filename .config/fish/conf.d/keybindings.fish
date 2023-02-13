@@ -3,16 +3,6 @@
 status is-interactive || exit
 
 fish_default_key_bindings
-# fish_vi_key_bindings
-
-bind \cc 'commandline ""'
-
-bind \cl "
-clear; printf '\e[3J'; commandline -f repaint
-if functions -q tide_prompt_at_bottom
-    tide_prompt_at_bottom
-end
-"
 
 bind \cg 'gh pr view --web &>/dev/null || gh repo view --web &>/dev/null'
 
