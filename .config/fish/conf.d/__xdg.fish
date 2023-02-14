@@ -9,10 +9,10 @@ function __maybe_mkdir
     test -d "$argv" || mkdir -p "$argv"
 end
 
-# Core directories
-set -gx LOCAL_BIN_HOME ~/.local/bin # Non-standard
-__maybe_mkdir $LOCAL_BIN_HOME
+set -gx LOCAL_BIN ~/.local/bin # Non-standard
+__maybe_mkdir $LOCAL_BIN
 
+# Core directories
 set -gx XDG_CACHE_HOME ~/.cache
 set -gx XDG_CONFIG_HOME ~/.config
 set -gx XDG_DATA_HOME ~/.local/share
@@ -23,18 +23,21 @@ for d in XDG_{CACHE,CONFIG,DATA,STATE}_HOME
 end
 
 # Deno
-set -gx DENO_INSTALL_ROOT $LOCAL_BIN_HOME/..
+set -gx DENO_INSTALL_ROOT $LOCAL_BIN/..
 
 # GCP
 set -gx CLOUDSDK_CONFIG $XDG_CONFIG_HOME/gcloud
 __maybe_mkdir $CLOUDSDK_CONFIG
+
+# Gnu Utilities
+set -gx GNU_BINS /usr/local/opt/gnu-{sed,tar}/libexec/gnubin
 
 # GnuPG
 set -gx GNUPGHOME $XDG_DATA_HOME/gnupg
 __maybe_mkdir $GNUPGHOME
 
 # Go
-set -gx GOBIN $LOCAL_BIN_HOME
+set -gx GOBIN $LOCAL_BIN
 set -gx GOPATH $XDG_DATA_HOME/go
 
 # Homebrew
@@ -62,7 +65,7 @@ __maybe_mkdir $NPM_CONFIG_PREFIX/bin
 __maybe_mkdir $NPM_CONFIG_PREFIX/lib
 
 # Python
-# set -gx PIPX_BIN_DIR=$LOCAL_BIN_HOME
+# set -gx PIPX_BIN_DIR=$LOCAL_BIN
 set -gx PIPX_HOME $XDG_DATA_HOME/pipx
 # set -gx PYENV_ROOT $XDG_DATA_HOME/pyenv
 set -gx PYTHONSTARTUP $XDG_CONFIG_HOME/python/startup.py
@@ -90,7 +93,8 @@ set -gx ZDOTDIR $XDG_CONFIG_HOME/zsh
 
 # PATH
 if status is-login
-    fish_add_path -g --move --path $LOCAL_BIN_DIR $HOMEBREW_PREFIX/{,s}bin
+    fish_add_path -g --move --path $HOMEBREW_PREFIX/{,s}bin
+    fish_add_path -g $GNU_BINS
     fish_add_path -g $NPM_CONFIG_PREFIX/bin
     fish_add_path -g $CARGO_HOME/bin
     fish_add_path -g $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
