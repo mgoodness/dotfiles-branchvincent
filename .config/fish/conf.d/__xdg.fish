@@ -70,6 +70,9 @@ set -gx PIPX_HOME $XDG_DATA_HOME/pipx
 # set -gx PYENV_ROOT $XDG_DATA_HOME/pyenv
 set -gx PYTHONSTARTUP $XDG_CONFIG_HOME/python/startup.py
 
+# Ripgrep
+set -gx RIPGREP_CONFIG_PATH $XDG_CONFIG_HOME/ripgrep/ripgrep.conf
+
 # Ruby
 set -gx BUNDLE_USER_CACHE $XDG_CACHE_HOME/bundle
 set -gx BUNDLE_USER_CONFIG $XDG_CONFIG_HOME/bundle
