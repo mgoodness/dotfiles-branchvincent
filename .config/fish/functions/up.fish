@@ -123,6 +123,8 @@ for item in (functions -a | string replace -rf "^__up_(?!all|auto|help)" "")
             set cmd fish
         case git
             set cmd git-workspace
+        case homebrew
+            set cmd brew
         case macos
             set cmd softwareupdate
     end
