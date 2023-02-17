@@ -1,5 +1,6 @@
 /*
 !/.bashrc
+!/bootstrap
 !/.config/
 /.config/argocd/
 /.config/configstore/
@@ -23,4 +24,3 @@
 /.vscode/*
 !/.vscode/settings.json
 !/.zprofile
-!/bootstrap
