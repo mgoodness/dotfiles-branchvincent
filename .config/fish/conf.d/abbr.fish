@@ -12,9 +12,6 @@ abbr byaml "bat -l yaml"
 abbr calfix "launchctl stop com.apple.CalendarAgent && launchctl start com.apple.CalendarAgent"
 abbr gpgfix "gpgconf --kill gpg-agent"
 
-abbr ghe "GH_HOST=github.mlbam.net gh"
-abbr ghepr "GH_HOST=github.mlbam.net gh pr create --fill"
-
 abbr gbsu "git branch --set-upstream-to"
 abbr gcae "git commit --allow-empty --verbose"
 abbr gcae! "git commit --allow-empty --amend --verbose"
@@ -23,6 +20,7 @@ abbr gpdo "git push --delete origin"
 # abbr grpm "git-rebase-preserve-author $(git_main_branch)"
 
 # abbr gff "git-fresh -f"
+abbr ghpr "gh pr create --fill"
 
 abbr --position anywhere k kubectl
 abbr --position anywhere ksys "kubectl --namespace=kube-system"

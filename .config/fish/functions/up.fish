@@ -75,12 +75,12 @@ function __up_dotfiles --description "Update dotfiles"
     yadm pull -q
 
     # Update package lists
-    command -q brew && brew bundle dump --force --no-restart
+    # command -q brew && brew bundle dump --force --no-restart
     cat $HOMEBREW_BUNDLE_FILE | string replace -r '("qlmarkdown"|"syntax-highlight")$' '$1, args: { no_quarantine: true }' >$HOMEBREW_BUNDLE_FILE
-    command -q code && code --list-extensions >$XDG_CONFIG_HOME/code/extensions.txt
+    # command -q code && code --list-extensions >$XDG_CONFIG_HOME/code/extensions.txt
 
     # Trash non-xdg cache
-    command rm -rf ~/.{bash_history,bundle,config/configstore,kube,node,npm,rustup,yarnrc}
+    command rm -rf ~/.{bash_history,bundle,config/configstore,kube,lesshst,node,npm,rustup,yarnrc}
 end
 
 function __up_fisher --description "Update fish packages"
