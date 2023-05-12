@@ -96,10 +96,11 @@ set -gx ZDOTDIR $XDG_CONFIG_HOME/zsh
 
 # PATH
 if status is-login
-    fish_add_path -g --move --path $HOMEBREW_PREFIX/{,s}bin
+    fish_add_path -g $HOMEBREW_PREFIX/{,s}bin
+    fish_add_path -g $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
     fish_add_path -g $GNU_BINS
+    fish_add_path -g $LOCAL_BIN
     fish_add_path -g $NPM_CONFIG_PREFIX/bin
     fish_add_path -g $CARGO_HOME/bin
-    fish_add_path -g $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
     fish_add_path -g $KREW_ROOT/bin
 end
