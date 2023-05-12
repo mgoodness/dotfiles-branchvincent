@@ -38,7 +38,7 @@ function __use_tea -a pkg --no-scope-shadowing
         path filter --type=dir (tea --prefix)/$pkg/* | string match -r '\d+\.\d+\.\d+'
     else
         set -l os (uname | string lower)
-        set -l arch (uname -m | string replace "arm64" "aarch64")
+        set -l arch (uname -m | string replace "arm64" "aarch64" | string replace "x86_64" "x86-64")
         curl -fsSL https://dist.tea.xyz/$pkg/$os/$arch/versions.txt
     end
 end
