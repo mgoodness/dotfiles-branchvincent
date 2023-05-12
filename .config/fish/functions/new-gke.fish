@@ -7,7 +7,7 @@ function new-gke
 
     if test -n "$cluster"
         gcloud container clusters get-credentials \
-            "(printf $cluster | cut -f1 -d' ')" \
+            "$(printf $cluster | cut -f1 -d' ')" \
             --region=(printf $cluster | tr -s ' ' | cut -f2 -d' ')
     end
 end
