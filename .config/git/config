@@ -1,4 +1,6 @@
 # -*- mode: ini -*-
+# Ref: https://dandavison.github.io/delta/get-started.html
+# Ref: https://dandavison.github.io/delta/configuration.html
 [branch]
 	autoSetupRebase = always
 [color]
@@ -25,6 +27,8 @@
 	trustctime = false
 [credential]
 	helper = osxkeychain
+[delta]
+	navigate = true
 [diff]
 	colorMoved = default	# color moved lines differently
 	; colorMoved = zebra
@@ -40,17 +44,16 @@
 	format = ssh
 [gpg "ssh"]
 	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-[include]
-	path = aliases
-[includeIf "gitdir:~/Code/github.mlbam.net/"]
-	path = ~/Code/github.mlbam.net/.gitconfig
 [init]
 	defaultBranch = main
+[interactive]
+	diffFilter = delta --color-only
 [log]
 	date = relative
 	follow = true
 [merge]
 	autoStash = true
+	conflictstyle = diff3
 [pretty]
 	stash = format:%C(bold magenta)%gd %C(blue)%>(13,trunc)%ad %C(reset)%s
 [pull]
@@ -77,3 +80,7 @@
 	useConfigOnly = true
 [web]
 	browser = open
+[include]
+	path = aliases
+[includeIf "gitdir:~/Code/github.mlbam.net/"]
+	path = ~/Code/github.mlbam.net/.gitconfig
