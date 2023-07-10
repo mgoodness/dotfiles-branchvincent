@@ -35,7 +35,7 @@ set -gx DENO_INSTALL_ROOT $LOCAL_BIN/..
 
 # gcloud
 set -gx CLOUDSDK_CONFIG $XDG_CONFIG_HOME/gcloud
-__maybe mkdir $CLOUDSDK_CONFIG
+__maybe_mkdir $CLOUDSDK_CONFIG
 
 # Gnu utils
 set -gx GNU_BINS /usr/local/opt/gnu-{sed,tar}/libexec/gnubin
