@@ -82,8 +82,10 @@ set -gx POETRY_DATA_DIR $XDG_DATA_HOME/poetry
 set -gx PSQL_HISTORY /dev/null
 
 # Python
+
+# Pending next release
 set -gx PIPX_HOME $XDG_DATA_HOME/pipx
-set -gx PYENV_ROOT $XDG_DATA_HOME/pyenv
+
 set -gx PYTHONSTARTUP $XDG_CONFIG_HOME/python/startup.py
 
 # Ripgrep
