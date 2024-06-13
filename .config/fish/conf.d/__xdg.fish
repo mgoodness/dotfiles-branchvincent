@@ -112,7 +112,7 @@ set -gx ZDOTDIR $XDG_CONFIG_HOME/zsh
 
 # PATH
 if status is-login
-    # fish_add_path -g $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
+    fish_add_path -g $HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
     # fish_add_path -g $GNU_BINS
     # fish_add_path -g $KREW_ROOT
     fish_add_path -g --move --path $LOCAL_BIN_DIRS $HOMEBREW_PREFIX/{,s}bin
