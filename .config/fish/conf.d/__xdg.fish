@@ -49,7 +49,7 @@ set -gx GOBIN $LOCAL_BIN
 set -gx GOPATH $XDG_DATA_HOME/go
 
 # Krew
-set -gx KREW_ROOT $XDG_CACHE_HOME/krew
+# set -gx KREW_ROOT $XDG_CACHE_HOME/krew
 
 # K8s
 set -gx KUBECONFIG $XDG_DATA_HOME/kube/config.yaml
